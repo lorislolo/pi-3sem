@@ -1,0 +1,25 @@
+.ContainerNav{
+    display: flex;
+    justify-content: space-between; /* Distribui os elementos ao longo do eixo principal com espaço entre eles */
+    align-items: center;
+    width: auto;
+    margin: 10px;
+}
+
+.ContainerNav a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    justify-content: flex-start ;
+}
+
+.ContainerNav p{
+    background-color: aqua;
+    text-align: center;
+}
+
+.ContainerNav img{
+    width: 100px;
+    height: 40px;
+    background-color: aqua;
+}
