@@ -1,14 +1,21 @@
 
 import './App.css';
 import Form from './components/Form';
+import H1 from './components/H1';
 import Nav from './components/Nav';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Nav/>
+      <div className="container">
 
-      <Form/>
+      <Nav/>
+      
+      <Home/>
+
+      </div>
+
     </div>
   );
 }

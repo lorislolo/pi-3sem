@@ -1,4 +1,4 @@
-import styles from './Button.module.css'
+import './Button.module.css'
 
 function Button ({value, type}) {
 

@@ -3,7 +3,7 @@
     justify-content: space-between; /* Distribui os elementos ao longo do eixo principal com espaço entre eles */
     align-items: center;
     width: auto;
-    margin: 10px;
+
 }
 
 .ContainerNav a{
