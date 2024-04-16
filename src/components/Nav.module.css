@@ -3,7 +3,8 @@
     justify-content: space-between; /* Distribui os elementos ao longo do eixo principal com espaço entre eles */
     align-items: center;
     width: auto;
-
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .ContainerNav a{
@@ -11,15 +12,19 @@
     text-decoration: none;
     color: #fff;
     justify-content: flex-start ;
+    align-items: center;
+    font-size: 25px;
+    margin-top: 2px;
 }
 
 .ContainerNav p{
-    background-color: aqua;
     text-align: center;
+    font-family: "Outfit", sans-serif;
+    color: #fff;
+    margin: 0;
 }
 
 .ContainerNav img{
-    width: 100px;
     height: 40px;
-    background-color: aqua;
+
 }

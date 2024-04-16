@@ -1,9 +1,13 @@
 input {
-    background-color: rgb(0, 255, 42);
+    background-color: #329F60;
+    color: #fff;
     border: none;
     padding: 30px 80px;
     margin: 20px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 6px;
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
 }

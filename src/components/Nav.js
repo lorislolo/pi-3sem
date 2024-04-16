@@ -1,14 +1,14 @@
 import styles from './Nav.module.css'
 import { FaChevronLeft } from 'react-icons/fa'
-import logo from '../logo.svg';
+import logo from '../img/parque.png';
 
-function Nav () {
+function Nav (props) {
 
 return(
     <nav className={styles.ContainerNav}>
         <a href="/aa"><FaChevronLeft/></a>
         <img src={logo} alt=""/>
-        <p>1/3</p>
+        <p>{props.numero}</p>
     </nav>
 )
 }

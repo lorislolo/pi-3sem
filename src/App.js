@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <div className="container">
 
-      <Nav/>
+      <Nav numero='1/3'/>
       
       <Home/>
 
