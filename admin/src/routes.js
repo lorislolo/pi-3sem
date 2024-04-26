@@ -3,8 +3,10 @@ import React from 'react'
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
-const Teste = React.lazy(() => import('./views/teste/Teste'))
 
+// User
+const UserTable = React.lazy(() => import('./views/user/UserTable'))
+const UserCadastro = React.lazy(() => import('./views/user/UserCadastro'))
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
@@ -96,7 +98,8 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
-  { path: '/teste', name: 'Teste', element: Teste}
+  { path: '/user', name: 'Usuario', element: UserTable},
+  { path: '/user/cadastro', name: 'Cadastrar', element: UserCadastro}
 ]
 
 export default routes
