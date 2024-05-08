@@ -7,7 +7,7 @@ function Home () {
     <section>
             <H1/>
         <div>
-            <Button type='button' value='QR CODE'/>
+            <Button type='button' value='Entrar'/>
             <Button type='button' value='QR CODE'/>
         </div>
 

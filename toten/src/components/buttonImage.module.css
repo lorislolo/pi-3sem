@@ -1,0 +1,12 @@
+.buttonImage {
+    border-style: none;
+    height: 200px;
+    width: 250px;
+    background-color: rgb(114, 114, 114);
+    margin: 20px;
+}
+
+.buttonImage img{
+    height: 150px;
+    width: 210px;
+}

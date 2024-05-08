@@ -3,6 +3,7 @@ import './App.css';
 import Form from './components/Form';
 import H1 from './components/H1';
 import Nav from './components/Nav';
+import Cidade from './pages/Cidade';
 import Home from './pages/Home';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
 
       <Nav numero='1/3'/>
       
-      <Home/>
+      {/* <Home/> */}
+      <Cidade/>
 
       </div>
 
