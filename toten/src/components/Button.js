@@ -1,10 +1,17 @@
-import './Button.module.css'
+import './Button.module.css';
+import { useNavigate } from 'react-router-dom';
 
-function Button ({value, type}) {
+function Button ({value, type, url}) {
+
+const navigate = useNavigate();
+
+const HandleClickButton = () => {
+    navigate(url)
+}
 
 return(
     <>
-    <input type={type} value={value}/>
+    <input onClick={HandleClickButton} type={type} value={value}/>
     </>
 )
 }

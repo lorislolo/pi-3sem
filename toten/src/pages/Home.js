@@ -5,9 +5,9 @@ import styles from './Home.module.css'
 function Home () {
     return(
     <section>
-            <H1/>
+            <H1 text='Bem Vindo'/>
         <div>
-            <Button type='button' value='Entrar'/>
+            <Button url="/passo2" type='button' value='Entrar'/>
             <Button type='button' value='QR CODE'/>
         </div>
 

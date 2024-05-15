@@ -6,7 +6,7 @@ function Nav (props) {
 
 return(
     <nav className={styles.ContainerNav}>
-        <a href="/aa"><FaChevronLeft/></a>
+        <a href="/"><FaChevronLeft/></a>
         <img src={logo} alt=""/>
         <p>{props.numero}</p>
     </nav>
