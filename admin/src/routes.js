@@ -5,8 +5,8 @@ const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
 // User
-const UserTable = React.lazy(() => import('./views/user/UserTable'))
-const UserCadastro = React.lazy(() => import('./views/user/UserCadastro'))
+const FuncionarioTable = React.lazy(() => import('./views/funcionario/FuncionarioTable'))
+const FuncionarioCadastro = React.lazy(() => import('./views/funcionario/FuncionarioCadastro'))
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/base/breadcrumbs/Breadcrumbs'))
@@ -98,8 +98,8 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', element: Modals },
   { path: '/notifications/toasts', name: 'Toasts', element: Toasts },
   { path: '/widgets', name: 'Widgets', element: Widgets },
-  { path: '/user', name: 'Usuario', element: UserTable},
-  { path: '/user/cadastro', name: 'Cadastrar', element: UserCadastro}
+  { path: '/funcionario', name: 'Funcionario', element: FuncionarioTable },
+  { path: '/funcionario/cadastro', name: 'Cadastrar', element: FuncionarioCadastro },
 ]
 
 export default routes
