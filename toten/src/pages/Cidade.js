@@ -11,8 +11,8 @@ function Cidade () {
     <section>
             <H1 text="De Onde Você é?"/>
         <div>
-            <ButtonImage image={caragua}/>
-            <ButtonImage image={saopaulo}/>
+            <ButtonImage url="/" image={caragua}/>
+            <ButtonImage url="/" image={saopaulo}/>
         </div>
 
     </section>

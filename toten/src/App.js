@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Cidade from './pages/Cidade';
 import Home from './pages/Home';
 import{BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import QrCode from './pages/QrCode';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Home/>}/>
           <Route path='/passo2' element={<Cidade/>}/>
+          <Route path='/QrCode' element={<QrCode/>}/>
         </Routes>
       </Router>
 

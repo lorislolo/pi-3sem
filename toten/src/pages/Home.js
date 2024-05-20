@@ -7,8 +7,8 @@ function Home () {
     <section>
             <H1 text='Bem Vindo'/>
         <div>
-            <Button url="/passo2" type='button' value='Entrar'/>
-            <Button type='button' value='QR CODE'/>
+            <Button url='/passo2' type='button' value='Entrar'/>
+            <Button url='/QrCode'type='button' value='QR CODE'/>
         </div>
 
     </section>
