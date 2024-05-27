@@ -1,11 +1,31 @@
-.container{
-    height: 90%;
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+    height: 90%;
 
-.buttonPosition{
-    margin-top: 50px;
-}
+  }
+  
+  .genderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .genderItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttonPosition {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
