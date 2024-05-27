@@ -31,7 +31,7 @@ function NomeIdade () {
 
             <div className={styles.buttonPosition}>
                 <Button type="button" value="Voltar" url='/Estado'/>
-                <Button type="button" value="Avançar" url='/CadastrarOutro'/>
+                <Button type="button" value="Concluído" url='/CadastrarOutro'/>
             </div>
         </div>
     )
