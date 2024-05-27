@@ -1,0 +1,23 @@
+.ContainerInput{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.forminput{
+    font-family: "Outfit", sans-serif;
+    border-radius: 6px;
+    border: none;
+    width: 450px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.formlabel{
+    font-family: "Outfit", sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}

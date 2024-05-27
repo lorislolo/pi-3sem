@@ -19,8 +19,8 @@ function Estado () {
             </select>
 
             <div className={styles.buttonPosition}>
-                <Button type="button" value="Voltar"/>
-                <Button type="button" value="Avançar"/>
+                <Button url='/Cidade' type="button" value="Voltar"/>
+                <Button url='/NomeIdade' type="button" value="Avançar"/>
             </div>
         </div>
     )

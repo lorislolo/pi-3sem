@@ -1,12 +1,13 @@
 
 import './App.css';
-
+import{BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Nav from './components/Nav';
 import Cidade from './pages/Cidade';
 import Home from './pages/Home';
-import{BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import QrCode from './pages/QrCode';
 import Estado from './pages/Estado';
+import NomeIdade from './pages/NomeIdade';
+import CadastrarOutro from './pages/CadastrarOutro';
 
 function App() {
   return (
@@ -18,9 +19,11 @@ function App() {
       <Router>
         <Routes>
           <Route exact path='/' element={<Home/>}/>
-          <Route path='/passo2' element={<Cidade/>}/>
+          <Route path='/Cidade' element={<Cidade/>}/>
           <Route path='/QrCode' element={<QrCode/>}/>
           <Route path='/Estado' element={<Estado/>}/>
+          <Route path='/NomeIdade' element={<NomeIdade/>}/>
+          <Route path='/CadastrarOutro' element={<CadastrarOutro/>}/>
         </Routes>
       </Router>
 

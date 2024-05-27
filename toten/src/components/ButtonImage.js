@@ -7,6 +7,7 @@ function ButtonImage({image, url}) {
     const navigate = useNavigate()
     
     const HandleClickButton = () => {
+        //coloque seus javascripts aqui
         navigate(url)
     }
 

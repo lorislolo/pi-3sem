@@ -4,8 +4,8 @@ function FormInput ({id, type, placeholder, text}) {
 
 return(
     <div className={styles.ContainerInput}>
-      <label htmFor={id}>{text}</label>
-      <input
+      <label className={styles.formlabel} htmFor={id}>{text}</label>
+      <input className={styles.forminput}
       type={type}
       name={id}
       id={id}
