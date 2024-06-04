@@ -1,23 +1,33 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styles from './buttonImage.module.css';
+import PropTypes from 'prop-types';
 
-import styles from './buttonImage.module.css'
-import {useNavigate} from 'react-router-dom'
+function ButtonImage({ onClick, image, url, className, isSelected }) {
+  const navigate = useNavigate();
 
-
-function ButtonImage({image, url}) {
-    const navigate = useNavigate()
-    
-    const HandleClickButton = () => {
-        //coloque seus javascripts aqui
-        navigate(url)
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
     }
+    if (url) {
+      navigate(url);
+    }
+  };
 
-    return(
-        <>
-        <button onClick={HandleClickButton} type="submit" className={styles.buttonImage}>
-            <img src={image} />
-        </button>
-        </>
-    )
+  return (
+    <button className={`${styles.buttonImage} ${isSelected ? styles.selected : ''} ${className}`} onClick={handleClick}>
+      <img src={image} alt="" />
+    </button>
+  );
 }
 
-export default ButtonImage
+ButtonImage.propTypes = {
+  onClick: PropTypes.func,
+  image: PropTypes.string.isRequired,
+  url: PropTypes.string,
+  className: PropTypes.string,
+  isSelected: PropTypes.bool
+};
+
+export default ButtonImage;

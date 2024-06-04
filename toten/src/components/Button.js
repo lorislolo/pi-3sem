@@ -1,19 +1,21 @@
-import styles from'./Button.module.css';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate} from 'react-router-dom';
+import styles from './Button.module.css';
 
-function Button ({value, type, url}) {
+function Button({ type, value, url }) {
+  const navigate = useNavigate(); 
 
-const navigate = useNavigate();
+  const handleClick = () => {
+    if (url) {
+      navigate(url);
+    }
+  };
 
-const HandleClickButton = () => {
-    navigate(url)
+  return (
+    <button type={type} onClick={handleClick} className={styles.button}>
+      {value}
+    </button>
+  );
 }
 
-return(
-    <>
-    <input className={styles.button} onClick={HandleClickButton} type={type} value={value}/>
-    </>
-)
-}
-
-export default Button
+export default Button;

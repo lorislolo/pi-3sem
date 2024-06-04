@@ -1,11 +1,10 @@
-import styles from './H1.module.css'
+import React from 'react';
+import styles from './H1.module.css';
 
-function H1 (props) {
-    return(
-        <>
-        <h1 className={styles.h1}>{props.text}</h1>
-        </>
-    )
+function H1({ text }) {
+  return (
+    <h1 className={styles.h1}>{text}</h1>
+  );
 }
 
-export default H1
+export default H1;
