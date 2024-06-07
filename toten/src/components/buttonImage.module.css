@@ -1,15 +1,10 @@
 .buttonImage {
     height: 200px;
     width: 250px;
-    background-color: rgb(177, 177, 177);
     margin: 20px;
-    border: 2px solid transparent;
+    border-radius: 10px;
 }
 
 .buttonImage img{
     height: 150px;
 }
-
-.selected {
-    border-color: lightgreen;
-  }
