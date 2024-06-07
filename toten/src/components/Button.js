@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Button.module.css';
 
-function Button({ type, value, url }) {
-  const navigate = useNavigate(); 
+function Button({ type, value, url, onClick }) {
+  const navigate = useNavigate();
 
   const handleClick = () => {
     if (url) {
@@ -12,7 +12,7 @@ function Button({ type, value, url }) {
   };
 
   return (
-    <button type={type} onClick={handleClick} className={styles.button}>
+    <button type={type} onClick={() => { handleClick(); if (onClick) { onClick() } }} className={styles.button}>
       {value}
     </button>
   );

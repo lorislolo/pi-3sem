@@ -28,11 +28,12 @@ function Estado() {
 
   const handleAvancar = () => {
     navigate('/NomeIdade', {
-      state: { 
+      state: {
         estadoSelecionado,
         cidadeSelecionada
       }
     });
+    console.log(estadoSelecionado, cidadeSelecionada)
   };
 
   return (
@@ -70,7 +71,7 @@ function Estado() {
 
       <div className={styles.buttonPosition}>
         <Button url='/Cidade' type="button" value="Voltar" />
-        <button type="button" onClick={handleAvancar}>Avançar</button>
+        <Button type="button" onClick={handleAvancar} value="Avançar" />
       </div>
     </div>
   );

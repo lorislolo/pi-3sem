@@ -34,7 +34,7 @@ function NomeIdade() {
     try {
       const response = await axios.post('http://localhost:3000/toten/visita', usuario);
       console.log('Usuário criado com sucesso:', response.data);
-      navigate('/CadastrarOutro'); 
+      navigate('/CadastrarOutro');
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
     }
@@ -42,7 +42,7 @@ function NomeIdade() {
 
   return (
     <div className={styles.container}>
-       <p>Estado: {estadoSelecionado}</p>
+      <p>Estado: {estadoSelecionado}</p>
       <p>Cidade: {cidadeSelecionada}</p>
       <FormInput
         id="Nome"
@@ -68,27 +68,27 @@ function NomeIdade() {
           onClick={() => handleSexoClick('M')}
         >
           <ButtonImage image={man} />
-          <H1 text="Masculino"/>
+          <H1 text="Masculino" />
         </div>
         <div
           className={`${styles.genderItem} ${sexo === 'F' ? styles.selected : ''}`}
           onClick={() => handleSexoClick('F')}
         >
           <ButtonImage image={woman} />
-          <H1 text="Feminino"/>
+          <H1 text="Feminino" />
         </div>
         <div
           className={`${styles.genderItem} ${sexo === 'O' ? styles.selected : ''}`}
           onClick={() => handleSexoClick('O')}
         >
           <ButtonImage image={other} />
-          <H1 text="Indefinido"/>
+          <H1 text="Indefinido" />
         </div>
       </div>
 
       <div className={styles.buttonPosition}>
         <Button type="button" value="Voltar" url='/Estado' />
-        <button type="button" onClick={handleSubmit}>Concluído</button>
+        <Button type="button" onClick={handleSubmit} value="Concluído" />
       </div>
     </div>
   );
