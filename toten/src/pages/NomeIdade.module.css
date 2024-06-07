@@ -19,6 +19,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
   }
   
   .buttonPosition {
@@ -29,3 +31,7 @@
     max-width: 400px;
   }
   
+  .selected {
+    border: 2px solid #ffffff;
+    transition: border-color 0.3s ease;
+  }
