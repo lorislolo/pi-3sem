@@ -43,11 +43,6 @@ function FuncionarioTable() {
                 });
             }
         })
-
-        return () => {
-            // Limpar o DataTable quando o componente for desmontado
-            table.destroy();
-        };
     }, []);
 
     return (
