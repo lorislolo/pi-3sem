@@ -13,23 +13,27 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useNavigate } from 'react-router-dom'
 
 import useAuthStore from '../../../stores/useAuthStore'
 import useAxios from '../../../helpers/useAxios'
 
 const Login = () => {
   const axios = useAxios()
-  const login = useAuthStore((s) => s.login)
-
+  const navigate = useNavigate()
+  const login = useAuthStore((e) => e.login)
+  
   const [validated, setValidated] = useState(false)
-  const [emailTxt, setEmailTxt] = useState('')
-  const [passTxt, setPassTxt] = useState('')
+  const [emailTxt, setEmailTxt] = useState('paiaTriste@gmail.com')
+  const [passTxt, setPassTxt] = useState('paiosinha')
 
   const hanldeLogin = async (event) => {
     event.preventDefault()
     try {
       const { data } = await axios.post('/funcionario/login', { email: emailTxt, senha: passTxt })
+      console.log(data)
       login(data.token)
+      navigate('/dashboard')
     } catch (error) {
       console.log(error)
       alert('Email ou Senha Invalido')

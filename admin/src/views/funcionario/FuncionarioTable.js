@@ -1,10 +1,13 @@
-import { CCardBody, CCard, CCardHeader, CCol, CRow, CTable, CButton, CPagination, CPaginationItem } from "@coreui/react";
+import { CCardBody, CCard, CCardHeader, CCol, CRow, CButton } from "@coreui/react";
 import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 import $ from 'jquery';
 import 'datatables.net-bs5';
 import { useCookies } from "react-cookie";
 
 function FuncionarioTable() {
+    const navigate = useNavigate();
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
     const tableRef = useRef(null);
     useEffect(() => {
@@ -18,7 +21,7 @@ function FuncionarioTable() {
                 var funcionarios = response.funcionario;
 
                 // Configurando o DataTables para exibir os dados dos funcionários
-                $(tableRef.current).DataTable({
+                const table = $(tableRef.current).DataTable({
                     data: funcionarios,
                     columns: [
                         { data: 'id', title: '#' },
@@ -27,12 +30,14 @@ function FuncionarioTable() {
                         { data: 'cpf', title: 'CPF' },
                         { data: 'roles', title: 'Função' },
                         {
-                            data: 'id', title: 'Ações', render: function (data, type, row, meta) {
-                                return `
-                            <div>
-                            <a href="/funcionario/editar/${data}" class="btn btn-primary">Editar</a>
-                            <a href="/funcionario/excluir/${data}" class="btn btn-secondary">Excluir</a>
-                            </div>`
+                            data: 'id', title: 'Ações', createdCell: function (td, cellData, rowData, row, col) {
+                                console.log(td, cellData, rowData, row, col);
+                                const root = createRoot(td);
+                                root.render(
+                                    <div className="d-flex">
+                                        <CButton color="primary" onClick={() => navigate(`/funcionario/editar/${cellData}`)}>Editar</CButton>
+                                        <CButton color="secondary" onClick={() => navigate(`/funcionario/excluir/${cellData}`)}>Excluir</CButton>
+                                    </div>);
                             }
                         }
                     ],
@@ -43,7 +48,7 @@ function FuncionarioTable() {
                 });
             }
         })
-    }, []);
+    }, [cookies.token]);
 
     return (
         <CRow>
@@ -55,7 +60,7 @@ function FuncionarioTable() {
                     <CCardBody>
                         <div className="d-flex justify-content-between mb-2">
                             <span>Lista de Funcionario</span>
-                            <CButton color="primary" size="m" href="/funcionario/cadastro">Cadastrar</CButton>
+                            <CButton color="primary" onClick={() => navigate('/funcionario/cadastro')}>Cadastrar</CButton>
                         </div>
                         <table ref={tableRef} className="table table-striped table-hover align-items-center" style={{ width: '100%' }}>
                         </table>
