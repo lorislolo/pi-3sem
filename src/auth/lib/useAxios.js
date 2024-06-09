@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-import useAuthStore from '../stores/useAuthStore.js'
+import useAuthStore from './storeAuth'
 
 export const baseURL = process.env.API_URL
 
@@ -12,7 +11,7 @@ export default function useAxios() {
   const axiosInstance = axios.create({
     baseURL,
     headers: {
-      Authorization: `Bearer ${token || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZXMiOiJBRE0iLCJpYXQiOjE3MTc4NDcxMjEsImV4cCI6MTcxNzg0NzMwMTB9.txJhX518g7ZVBHRR7g_yUlJ1Yr5l0LSPRR6SeJC346k'}`,
+      Authorization: `Bearer ${token}`,
     },
     timeout: 5000,
     timeoutErrorMessage: 'Tempo limite excedido. Tente novamente mais tarde.',

@@ -1,14 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
-const Routes = {
-  ADM: React.lazy(() => import('./adm/SubApp')),
-  TOTEM: React.lazy(() => import('./totem/subApp')),
-}
+import ProtectedRoute from './auth/ProtectedRoute'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <Routes.ADM />
+    <ProtectedRoute />
   </React.StrictMode>,
 )

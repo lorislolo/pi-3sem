@@ -23,8 +23,11 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import avatar3 from './../../assets/images/avatars/3.jpg'
+import useAuthStore from '../../../auth/lib/storeAuth'
 
 const AppHeaderDropdown = () => {
+  const logout = useAuthStore((s) => s.logout)
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0 pe-0" caret={false}>
@@ -41,7 +44,7 @@ const AppHeaderDropdown = () => {
           Configurações
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem href="#">
+        <CDropdownItem onClick={logout}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Sair
         </CDropdownItem>
