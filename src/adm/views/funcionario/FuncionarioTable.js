@@ -5,66 +5,59 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import 'datatables.net-bs5'
 import { useCookies } from 'react-cookie'
+import useAuthStore from '../../../auth/lib/storeAuth'
+import useAxios from '../../../auth/lib/useAxios'
 
 function FuncionarioTable() {
   const navigate = useNavigate()
-  const [cookies, setCookie, removeCookie] = useCookies(['token'])
   const tableRef = useRef(null)
-  useEffect(() => {
-    $.ajax({
-      url: 'https://pj3-backend.onrender.com/funcionario/',
-      type: 'GET',
-      beforeSend: function (xhr) {
-        xhr.setRequestHeader(
-          'Authorization',
-          `Bearer ${cookies.token || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZXMiOiJBRE0iLCJpYXQiOjE3MTc4NDcxMjEsImV4cCI6MTcxNzg0NzMwMTB9.txJhX518g7ZVBHRR7g_yUlJ1Yr5l0LSPRR6SeJC346k'}`,
-        )
-      },
-      success: function (response) {
-        var funcionarios = response.funcionario
+  const axios = useAxios()
 
-        // Configurando o DataTables para exibir os dados dos funcionários
-        const table = $(tableRef.current).DataTable({
-          data: funcionarios,
-          columns: [
-            { data: 'id', title: '#' },
-            { data: 'nome', title: 'Nome' },
-            { data: 'email', title: 'Email' },
-            { data: 'cpf', title: 'CPF' },
-            { data: 'roles', title: 'Função' },
-            {
-              data: 'id',
-              title: 'Ações',
-              createdCell: function (td, cellData, rowData, row, col) {
-                console.log(td, cellData, rowData, row, col)
-                const root = createRoot(td)
-                root.render(
-                  <div className="d-flex">
-                    <CButton
-                      color="primary"
-                      onClick={() => navigate(`/funcionario/editar/${cellData}`)}
-                    >
-                      Editar
-                    </CButton>
-                    <CButton
-                      color="secondary"
-                      onClick={() => navigate(`/funcionario/excluir/${cellData}`)}
-                    >
-                      Excluir
-                    </CButton>
-                  </div>,
-                )
-              },
+  useEffect(() => {
+    axios.get('/funcionario').then(({ data }) => {
+      // Configurando o DataTables para exibir os dados dos funcionários
+      $(tableRef.current).DataTable({
+        data: data.funcionario,
+        columns: [
+          { data: 'id', title: '#' },
+          { data: 'nome', title: 'Nome' },
+          { data: 'email', title: 'Email' },
+          { data: 'cpf', title: 'CPF' },
+          { data: 'roles', title: 'Função' },
+          {
+            data: 'id',
+            title: 'Ações',
+            createdCell: function (td, cellData, rowData, row, col) {
+              console.log(td, cellData, rowData, row, col)
+              const root = createRoot(td)
+              root.render(
+                <div className="d-flex">
+                  <CButton
+                    color="primary"
+                    onClick={() => navigate(`/funcionario/editar/${cellData}`)}
+                  >
+                    Editar
+                  </CButton>
+                  <CButton
+                    color="secondary"
+                    onClick={() => navigate(`/funcionario/excluir/${cellData}`)}
+                  >
+                    Excluir
+                  </CButton>
+                </div>,
+              )
             },
-          ],
-          createdRow: function (row, data, dataIndex) {
-            // Adicionando a classe 'align-middle' a todas as células
-            $(row).children('td').addClass('align-middle')
           },
-        })
-      },
+        ],
+        createdRow: function (row, data, dataIndex) {
+          // Adicionando a classe 'align-middle' a todas as células
+          $(row).children('td').addClass('align-middle')
+        },
+      })
     })
-  }, [cookies.token])
+
+    return () => $(tableRef.current).DataTable().destroy()
+  }, [])
 
   return (
     <CRow>
