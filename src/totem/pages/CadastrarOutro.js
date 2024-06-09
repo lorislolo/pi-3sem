@@ -8,7 +8,6 @@ function CadastrarOutro() {
     <div className={styles.container}>
       <H1 text="Pronto!Cadastrado" />
       <div className={styles.buttonPosition}>
-        <Button type="button" value="Cancelar" url="/" />
         <Button type="button" value="Finalizar!" url="/" />
       </div>
     </div>
