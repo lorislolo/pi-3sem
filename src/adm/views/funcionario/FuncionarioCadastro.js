@@ -11,7 +11,7 @@ import {
   CFormSelect,
   CRow,
 } from '@coreui/react'
-import useAxios from '../../../lib/useAxios'
+import useAxios from '../../../auth/lib/useAxios'
 
 function FuncionarioCadastro() {
   const axios = useAxios()

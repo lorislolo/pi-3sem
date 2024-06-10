@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import 'datatables.net-bs5'
-import { useCookies } from 'react-cookie'
-import useAuthStore from '../../../auth/lib/storeAuth'
 import useAxios from '../../../auth/lib/useAxios'
 
 function FuncionarioTable() {
@@ -28,7 +26,6 @@ function FuncionarioTable() {
             data: 'id',
             title: 'Ações',
             createdCell: function (td, cellData, rowData, row, col) {
-              console.log(td, cellData, rowData, row, col)
               const root = createRoot(td)
               root.render(
                 <div className="d-flex">

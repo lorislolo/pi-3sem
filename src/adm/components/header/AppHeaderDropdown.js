@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   CAvatar,
-  CBadge,
   CDropdown,
   CDropdownDivider,
   CDropdownHeader,
@@ -10,14 +9,8 @@ import {
   CDropdownToggle,
 } from '@coreui/react'
 import {
-  cilBell,
-  cilCreditCard,
-  cilCommentSquare,
-  cilEnvelopeOpen,
-  cilFile,
   cilLockLocked,
   cilSettings,
-  cilTask,
   cilUser,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
@@ -44,7 +37,7 @@ const AppHeaderDropdown = () => {
           Configurações
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem onClick={logout}>
+        <CDropdownItem href="/" onClick={logout}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Sair
         </CDropdownItem>
