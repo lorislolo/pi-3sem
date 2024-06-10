@@ -11,48 +11,66 @@ function CatalogoTable() {
   const tableRef = useRef(null)
   const axios = useAxios()
 
+  const handleDelete = (uuid) => {
+    if (window.confirm('Deseja realmente excluir esta especie?')) {
+      axios.delete(`/catalogo/${uuid}`).then(() => {
+        alert('Especie excluida com sucesso')
+        window.location.reload()
+      })
+    }
+  }
+
   useEffect(() => {
     axios.get('/catalogo').then(({ data }) => {
-      $(tableRef.current).DataTable({
-        data: data.cata,
-        columns: [
-          { data: 'uuid', title: '#' },
-          { data: 'nomeCientifico', title: 'Nome Cientifico' },
-          { data: 'nomePopular', title: 'Nome Popular' },
-          { data: 'descricao', title: 'Descrição' },
-          {
-            data: 'uuid',
-            title: 'Ações',
-            createdCell: function (td, cellData, rowData, row, col) {
-              const root = createRoot(td)
-              root.render(
-                <div className="d-flex">
-                  <CButton
-                    color="primary"
-                    onClick={() => navigate(`/catalogo/editar/${cellData}`)}
-                  >
-                    Editar
-                  </CButton>
-                  <CButton
-                    color="secondary"
-                    onClick={() => navigate(`/catalogo/excluir/${cellData}`)}
-                  >
-                    Excluir
-                  </CButton>
-                </div>,
-              )
+      const filteredData = data.cata.filter(item => item.deleted_at === null)
+      
+      if ($.fn.DataTable.isDataTable(tableRef.current)) {
+        $(tableRef.current).DataTable().clear().rows.add(filteredData).draw()
+      } else {
+        $(tableRef.current).DataTable({
+          data: filteredData,
+          columns: [
+            { data: 'nomeCientifico', title: 'Nome Cientifico' },
+            { data: 'nomePopular', title: 'Nome Popular' },
+            { data: 'descricao', title: 'Descrição' },
+            {
+              data: 'catalogoGaleria',
+              title: 'Imagens',
+              render: function (data) {
+                return data.length > 0 ? (data.length > 1 ? `${data.length} Imagens` : `1 Imagem`) : `Sem imagens`
+              }
             },
+            {
+              data: 'uuid',
+              title: 'Ações',
+              createdCell: function (td, cellData, rowData, row, col) {
+                const root = createRoot(td)
+                root.render(
+                  <div className="d-flex">
+                    <CButton
+                      color="primary"
+                      onClick={() => navigate(`/catalogo/editar/${cellData}`)}
+                    >
+                      Editar
+                    </CButton>
+                    <CButton
+                      color="secondary"
+                      onClick={() => handleDelete(cellData)}
+                    >
+                      Excluir
+                    </CButton>
+                  </div>,
+                )
+              },
+            },
+          ],
+          createdRow: function (row, data, dataIndex) {
+            $(row).children('td').addClass('align-middle')
           },
-        ],
-        createdRow: function (row, data, dataIndex) {
-          $(row).children('td').addClass('align-middle')
-        },
-      })
+        })
+      }
     })
-
-    return () => $(tableRef.current).DataTable().destroy()
-  }, [])
-
+  }, [axios, navigate])
   return (
     <CRow>
       <CCol>
