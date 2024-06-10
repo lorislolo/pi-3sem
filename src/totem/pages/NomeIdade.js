@@ -32,7 +32,7 @@ function NomeIdade() {
     }
 
     try {
-      const response = await axios.post('http://localhost:3000/toten/visita', usuario)
+      const response = await axios.post('https://pj3-backend.onrender.com/toten/visita', usuario)
       console.log('Usuário criado com sucesso:', response.data)
       navigate('/CadastrarOutro')
     } catch (error) {
