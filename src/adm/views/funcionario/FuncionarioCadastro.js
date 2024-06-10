@@ -17,7 +17,7 @@ function FuncionarioCadastro() {
   const axios = useAxios()
   const navigate = useNavigate()
 
-  const [validated, setValidated] = useState(false)
+  // const [validated, setValidated] = useState(false)
   const [nomeTxt, setNomeTxt] = useState('')
   const [funcaoTxt, setFuncaoTxt] = useState('ADM')
   const [cpfTxt, setCpfTxt] = useState('')
@@ -46,7 +46,7 @@ function FuncionarioCadastro() {
       console.log(error)
       alert('Erro ao cadastrar funcionario')
     }
-    setValidated(true)
+    // setValidated(true)
   }
   return (
     <CRow>
@@ -56,7 +56,10 @@ function FuncionarioCadastro() {
             <strong>Cadastro de Funcionario</strong>
           </CCardHeader>
           <CCardBody>
-            <CForm className="row" noValidate validated={validated} onSubmit={handleCreate}>
+            <CForm className="row"
+            noValidate
+            // validated={validated}
+            onSubmit={handleCreate}>
               <CCol className="col-6 mb-2">
                 <CFormInput
                   type="text"

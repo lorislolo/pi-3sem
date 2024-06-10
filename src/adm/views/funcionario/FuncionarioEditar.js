@@ -7,8 +7,8 @@ function FuncionarioEditar() {
     const axios = useAxios()
     const navigate = useNavigate();
 
-    const [validatedUpdate, setValidatedUpdate] = useState(false);
-    const [validatedSenha, setValidatedSenha] = useState(false);
+    // const [validatedUpdate, setValidatedUpdate] = useState(false);
+    // const [validatedSenha, setValidatedSenha] = useState(false);
 
     const [nomeTxt, setNomeTxt] = useState('');
     const [funcaoTxt, setFuncaoTxt] = useState('ADM');
@@ -43,7 +43,7 @@ function FuncionarioEditar() {
             console.log(error);
             alert("Erro ao editar funcionario");
         }
-        setValidatedUpdate(true);
+        //setValidatedUpdate(true);
     }
 
     const handleSenha = async (event) => {
@@ -63,7 +63,7 @@ function FuncionarioEditar() {
             console.log(error);
             alert("Erro ao alterar senha");
         }
-        setValidatedSenha(true);
+        // setValidatedSenha(true);
     }
     return (
         <CRow>
@@ -76,7 +76,7 @@ function FuncionarioEditar() {
                         <CForm
                             className="row mb-2"
                             noValidate
-                            validated={validatedUpdate}
+                            // validated={validatedUpdate}
                             onSubmit={handleUpdate}
                         >
                             <CCol className="col-6 mb-2">
@@ -126,7 +126,7 @@ function FuncionarioEditar() {
                         <CForm
                             className="row mb-2"
                             noValidate
-                            validated={validatedSenha}
+                        // validated={validatedSenha}
                         >
                             <p>Alterar Senha</p>
                             <CCol className="col-6 mb-2">
