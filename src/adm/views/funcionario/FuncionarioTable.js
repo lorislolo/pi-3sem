@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import 'datatables.net-bs5'
-import useAxios from '../../. ./auth/lib/useAxios'
+import useAxios from '../../../auth/lib/useAxios'
 
 function FuncionarioTable() {
   const navigate = useNavigate()
