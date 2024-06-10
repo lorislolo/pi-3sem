@@ -82,7 +82,7 @@ function NomeIdade() {
           onClick={() => handleSexoClick('O')}
         >
           <ButtonImage image={other} />
-          <H1 text="Indefinido" />
+          <H1 text="Outros" />
         </div>
       </div>
 

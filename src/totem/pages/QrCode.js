@@ -18,7 +18,8 @@ function QrCode() {
         setVisita(data)
         if (visita != null) {
           alert(`Visita Cadastrada \n Bem vindo ao Parque Juqueriquere`)
-          navigate('/')    
+          const foi = 'foi'
+          navigate('/', {state: {foi}})    
         }
       } catch (error) {
         console.error('Erro ao buscar visitas', error)
