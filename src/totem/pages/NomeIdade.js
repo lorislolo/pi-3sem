@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import axios from 'axios'
+import useAxios from '../../auth/lib/useAxios'
 import Button from '../components/Button'
 import FormInput from '../components/FormInput'
 import ButtonImage from '../components/ButtonImage'
@@ -18,6 +18,8 @@ function NomeIdade() {
   const location = useLocation()
   const { estadoSelecionado, cidadeSelecionada } = location.state || {}
 
+  const axios = useAxios()
+
   const handleSexoClick = (sexoSelecionado) => {
     setSexo(sexoSelecionado)
   }
@@ -32,7 +34,7 @@ function NomeIdade() {
     }
 
     try {
-      const response = await axios.post('https://pj3-backend.onrender.com/toten/visita', usuario)
+      const response = await axios.post(`${baseURL}/toten/visita`, usuario)
       console.log('Usuário criado com sucesso:', response.data)
       navigate('/CadastrarOutro')
     } catch (error) {

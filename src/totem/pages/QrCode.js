@@ -1,38 +1,50 @@
 import Button from '../components/Button'
 import styles from './QrCode.module.css'
 import QRCode from 'qrcode.react'
-import axios from 'axios'
-import { useNavigate} from 'react-router-dom'
+
+import useAxios, { baseURL } from '../../auth/lib/useAxios'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 function QrCode() {
-  const [visita, setVisita] = useState('')
+  const [visita, setVisita] = useState(null)
   const navigate = useNavigate()
 
+  const axios = useAxios()
+
   useEffect(() => {
-    const dataToten = new Date()
-    const intervalGetVisitas = setInterval(async () => {
+    const dataToten = Date.now()
+    // const inteID = setInterval(async () => {
+    ;(async () => {
       try {
-        const result = await axios.get(`https://pj3-backend.onrender.com/toten/visita/${dataToten}`)
-        const data = await result.json()
+        const { data } = await axios.get(`${baseURL}/toten/visita/${dataToten}`)
         setVisita(data)
-        if (visita != null) {
-          alert(`Visita Cadastrada \n Bem vindo ao Parque Juqueriquere`)
+        if (!visita) {
+          setTimeout(
+            alert,
+            5000,
+            `Visita Cadastrada \n ${data.usuario.apelido} Bem vindo ao Parque Juqueriquere`,
+          )
           const foi = 'foi'
-          navigate('/', {state: {foi}})    
+          navigate('/', { state: { foi } })
+          // clearInterval(inteID)
         }
       } catch (error) {
         console.error('Erro ao buscar visitas', error)
       }
-    }, 1500) 
-
+    })()
+    // }, 1500)
   }, [])
-
-    
 
   return (
     <div className={styles.container}>
-      <QRCode className={styles.img} value="qrcodetoten.com" />
+      <div style={{ padding: 10, backgroundColor: 'white' }}>
+        <QRCode
+          size={300}
+          className={styles.img}
+          value="qrcodetoten.comaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        />
+      </div>
       <Button type="button" url="/" value="Voltar" />
     </div>
   )
