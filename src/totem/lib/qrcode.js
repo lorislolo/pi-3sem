@@ -16,6 +16,8 @@ export function useQRcode() {
     })
 
     socket.on('connect_error', async (error) => {
+      if (!error?.data) return console.log(error || 'erro no socket')
+
       if (error.data.status === 401) {
         useAuthStore.getState().logout()
       }

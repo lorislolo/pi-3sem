@@ -27,14 +27,14 @@ function NomeIdade() {
   const handleSubmit = async () => {
     const usuario = {
       nome,
-      nascimento,
+      nascimento: new Date(nascimento),
       sexo,
       cidade: location.state.cidadeSelecionada,
       estado: location.state.estadoSelecionado,
     }
 
     try {
-      const response = await axios.post(`${baseURL}/toten/visita`, usuario)
+      const response = await axios.post(`/toten/visita`, usuario)
       console.log('Usuário criado com sucesso:', response.data)
       navigate('/CadastrarOutro')
     } catch (error) {
