@@ -44,11 +44,7 @@ export function useQRcode() {
         setHash(hash)
       })
       socket.on('qrcode:visita', (state) => {
-        navigate('/CadastrarOutro', {
-          state: {
-            nome: 'a',
-          },
-        })
+        navigate('/CadastrarOutro', { state })
 
         socket.emit('qrcode:get', (hash) => {
           setHash(hash)

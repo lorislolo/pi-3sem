@@ -81,13 +81,13 @@ function FuncionarioTable() {
               </CButton>
             </div>
             {axios.isLoading && <div>Carregando...</div>}
-            {!axios.isLoading && (
-              <table
-                ref={tableRef}
-                className="table table-striped table-hover align-items-center"
-                style={{ width: '100%' }}
-              ></table>
-            )}
+            {/* {!axios.isLoading && ( */}
+            <table
+              ref={tableRef}
+              className="table table-striped table-hover align-items-center"
+              style={{ width: '100%' }}
+            ></table>
+            {/* )} */}
           </CCardBody>
         </CCard>
       </CCol>
