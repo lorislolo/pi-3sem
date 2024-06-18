@@ -4,6 +4,7 @@ import {
   cilFlower,
   cilSpeedometer,
   cilUser,
+  cilNotes
 } from '@coreui/icons'
 import { CNavItem } from '@coreui/react'
 
@@ -25,6 +26,12 @@ const _nav = [
     name: 'Catalogo',
     to: '/catalogo',
     icon: <CIcon icon={cilFlower} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Relatorio',
+    to: '/relatorio',
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
   },
 ]
 
