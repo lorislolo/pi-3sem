@@ -117,7 +117,7 @@ function CatalogoCadastro() {
               </CCol>
 
               <CCol className="col-12">
-                <CButton color="secondary" className="me-2" href="/funcionario">
+                <CButton color="secondary" className="me-2" href="/catalogo">
                   Cancelar
                 </CButton>
                 <CButton type="submit" color="primary" disabled={axios.isLoading}>

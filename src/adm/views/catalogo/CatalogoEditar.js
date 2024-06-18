@@ -133,7 +133,7 @@ function CatalogoEditar() {
                 <CFormInput type="file" name="som" label="Audio da Especie:" accept="audio/*" />
               </CCol>
               <CCol className="col-12 mt-3">
-                <CButton color="secondary" className="me-2" href="/funcionario">
+                <CButton color="secondary" className="me-2" href="/catalogo">
                   Cancelar
                 </CButton>
                 <CButton type="submit" color="primary" size="m">
