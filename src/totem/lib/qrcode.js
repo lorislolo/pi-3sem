@@ -3,11 +3,13 @@ import useAuthStore from '../../auth/lib/storeAuth'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { io } from 'socket.io-client'
+import { useNavigate } from 'react-router-dom'
 
 export function useQRcode() {
   const { token: tokenC } = useAuthStore()
   const [hash, setHash] = useState(null)
   const [token, setTokenPaiado] = useState(tokenC)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!token) return
@@ -40,10 +42,13 @@ export function useQRcode() {
     socket.on('connect', () => {
       socket.emit('qrcode:get', (hash) => {
         setHash(hash)
-        console.log(hash)
       })
-      socket.on('qrcode:visita', (data) => {
-        alert(` ${data.nome} fez uma visita`)
+      socket.on('qrcode:visita', (state) => {
+        navigate('/CadastrarOutro', {
+          state: {
+            nome: 'a',
+          },
+        })
 
         socket.emit('qrcode:get', (hash) => {
           setHash(hash)

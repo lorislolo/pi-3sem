@@ -35,10 +35,13 @@ function NomeIdade() {
 
     try {
       const response = await axios.post(`/toten/visita`, usuario)
-      console.log('Usuário criado com sucesso:', response.data)
-      navigate('/CadastrarOutro')
+      navigate('/CadastrarOutro', {
+        state: { nome: response?.data?.usuarioParcial?.nome },
+      })
     } catch (error) {
       console.error('Erro ao criar usuário:', error)
+      alert('Erro ao criar usuário, tente novamente')
+      navigate('/')
     }
   }
 
