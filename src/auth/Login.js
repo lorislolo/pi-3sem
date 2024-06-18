@@ -22,8 +22,8 @@ const Login = () => {
   const login = useAuthStore((e) => e.login)
 
   const [validated, setValidated] = useState(false)
-  const [emailTxt, setEmailTxt] = useState('paiaTriste@gmail.com')
-  const [passTxt, setPassTxt] = useState('paiosinha')
+  const [emailTxt, setEmailTxt] = useState('')
+  const [passTxt, setPassTxt] = useState('')
 
   const hanldeLogin = async (event) => {
     event.preventDefault()
@@ -78,18 +78,10 @@ const Login = () => {
                       required
                     />
                   </CInputGroup>
-                  <CRow>
-                    <CCol xs={6}>
-                      <CButton color="primary" className="px-4" type="submit">
-                        Login
-                      </CButton>
-                    </CCol>
-                    <CCol xs={6} className="text-right">
-                      <CButton color="link" className="px-0">
-                        Esqueci minha senha
-                      </CButton>
-                    </CCol>
-                  </CRow>
+
+                  <CButton color="primary" className="px-4 w-100" type="submit">
+                    ENTRAR
+                  </CButton>
                 </CForm>
               </CCardBody>
             </CCard>

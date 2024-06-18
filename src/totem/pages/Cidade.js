@@ -5,7 +5,7 @@ import H1 from '../components/H1'
 import styles from './Cidade.module.css'
 
 import caragua from '../img/bandeiracaraguatatuba.png'
-import saopaulo from '../img/bandeirasaopaulo.png'
+import global from '../img/global.png'
 
 function Cidade() {
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ function Cidade() {
           <H1 text="Caraguatatuba" />
         </div>
         <div className={styles.item}>
-          <ButtonImage onClick={handleOutroClick} image={saopaulo} className={styles.button} />
+          <ButtonImage onClick={handleOutroClick} image={global} className={styles.button} />
           <H1 text="Outro" />
         </div>
       </div>
