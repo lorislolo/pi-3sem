@@ -6,6 +6,9 @@ export const baseURL = process.env.API_URL
 
 if (!baseURL) throw new Error('Forneça o URL do backend no .env')
 
+export const getFiles = (urlOrPath) =>
+  urlOrPath.startsWith('http') ? urlOrPath : `${baseURL}/files/${urlOrPath}`
+
 export default function useAxios() {
   const { token, logout } = useAuthStore()
   const [isLoading, setIsLoading] = useState(false)

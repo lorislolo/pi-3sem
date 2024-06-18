@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import 'datatables.net-bs5'
-import useAxios from '../../../auth/lib/useAxios'
+import useAxios, { getFiles } from '../../../auth/lib/useAxios'
 
 function CatalogoTable() {
   const navigate = useNavigate()
@@ -28,20 +28,17 @@ function CatalogoTable() {
         $(tableRef.current).DataTable({
           data: data.cata,
           columns: [
-            { data: 'nomeCientifico', title: 'Nome Cientifico' },
-            { data: 'nomePopular', title: 'Nome Popular' },
-            { data: 'descricao', title: 'Descrição' },
             {
-              data: 'catalogoGaleria',
-              title: 'Imagens',
+              data: 'ftModel',
+              title: 'Foto',
               render: function (data) {
-                return data.length > 0
-                  ? data.length > 1
-                    ? `${data.length} Imagens`
-                    : `1 Imagem`
-                  : `Sem imagens`
+                return `<img src=${getFiles(data)} alt="Imagem" style="width: 50px; height: 50px; margin-right: 5px;" />`
               },
             },
+            { data: 'nomeCientifico', title: 'Nome Cientifico' },
+            { data: 'nomePopular', title: 'Nome Popular' },
+            { data: 'especie', title: 'Espécie' },
+
             {
               data: 'uuid',
               title: 'Ações',
@@ -51,6 +48,7 @@ function CatalogoTable() {
                   <div className="d-flex">
                     <CButton
                       color="primary"
+                      style={{ marginRight: '10px' }}
                       onClick={() => navigate(`/catalogo/editar/${cellData}`)}
                     >
                       Editar
