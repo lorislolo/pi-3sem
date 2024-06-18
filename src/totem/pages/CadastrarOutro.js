@@ -11,7 +11,7 @@ function CadastrarOutro(a) {
   useEffect(() => {
     const timeout = setTimeout(() => {
       nav('/')
-    }, 10000)
+    }, 3000)
 
     return () => clearTimeout(timeout)
   }, [])

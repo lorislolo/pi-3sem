@@ -93,7 +93,7 @@ function NomeIdade() {
 
       <div className={styles.buttonPosition}>
         <Button type="button" value="Voltar" url="/Estado" />
-        <Button type="button" url="/CadastrarOutro" onClick={handleSubmit} value="Concluído" />
+        <Button type="button" onClick={handleSubmit} value="Concluído" />
       </div>
     </div>
   )

@@ -11,11 +11,9 @@ function Home() {
   return (
     <section>
       <div className={styles.container}>
-        {hash && (
-          <div style={{ backgroundColor: 'white', padding: 10 }}>
-            <QRCode size={300} className={styles.img} value={hash} />
-          </div>
-        )}
+        <div style={{ backgroundColor: 'white', padding: 10 }}>
+          <QRCode size={300} className={styles.img} value={hash} />
+        </div>
       </div>
       <H1 text="Inicie Sua Visita" />
       <div>
