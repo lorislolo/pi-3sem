@@ -35,8 +35,12 @@ function CatalogoTable() {
               data: 'catalogoGaleria',
               title: 'Imagens',
               render: function (data) {
-                return data.length > 0 ? (data.length > 1 ? `${data.length} Imagens` : `1 Imagem`) : `Sem imagens`
-              }
+                return data.length > 0
+                  ? data.length > 1
+                    ? `${data.length} Imagens`
+                    : `1 Imagem`
+                  : `Sem imagens`
+              },
             },
             {
               data: 'uuid',
@@ -51,10 +55,7 @@ function CatalogoTable() {
                     >
                       Editar
                     </CButton>
-                    <CButton
-                      color="secondary"
-                      onClick={() => handleDelete(cellData)}
-                    >
+                    <CButton color="secondary" onClick={() => handleDelete(cellData)}>
                       Excluir
                     </CButton>
                   </div>,
@@ -68,7 +69,11 @@ function CatalogoTable() {
         })
       }
     })
-  }, [axios, navigate])
+
+    return () => {
+      $(tableRef.current).DataTable().destroy()
+    }
+  }, [])
   return (
     <CRow>
       <CCol>
@@ -83,11 +88,15 @@ function CatalogoTable() {
                 Cadastrar
               </CButton>
             </div>
-            <table
-              ref={tableRef}
-              className="table table-striped table-hover align-items-center"
-              style={{ width: '100%' }}
-            ></table>
+            {axios.isLoading && <div>Carregando...</div>}
+
+            {!axios.isLoading && (
+              <table
+                ref={tableRef}
+                className="table table-striped table-hover align-items-center"
+                style={{ width: '100%' }}
+              ></table>
+            )}
           </CCardBody>
         </CCard>
       </CCol>

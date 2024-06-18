@@ -56,10 +56,12 @@ function FuncionarioCadastro() {
             <strong>Cadastro de Funcionario</strong>
           </CCardHeader>
           <CCardBody>
-            <CForm className="row"
+            <CForm
+              className="row"
               noValidate
               // validated={validated}
-              onSubmit={handleCreate}>
+              onSubmit={handleCreate}
+            >
               <CCol className="col-6 mb-2">
                 <CFormInput
                   type="text"

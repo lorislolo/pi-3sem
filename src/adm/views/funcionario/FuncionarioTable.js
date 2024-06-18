@@ -46,10 +46,7 @@ function FuncionarioTable() {
                     >
                       Editar
                     </CButton>
-                    <CButton
-                      color="secondary"
-                      onClick={() => handleDelete(cellData)}
-                    >
+                    <CButton color="secondary" onClick={() => handleDelete(cellData)}>
                       Excluir
                     </CButton>
                   </div>,
@@ -64,7 +61,10 @@ function FuncionarioTable() {
         })
       }
     })
-  }, [axios, navigate])
+    return () => {
+      $(tableRef.current).DataTable().destroy()
+    }
+  }, [])
 
   return (
     <CRow>
@@ -80,11 +80,14 @@ function FuncionarioTable() {
                 Cadastrar
               </CButton>
             </div>
-            <table
-              ref={tableRef}
-              className="table table-striped table-hover align-items-center"
-              style={{ width: '100%' }}
-            ></table>
+            {axios.isLoading && <div>Carregando...</div>}
+            {!axios.isLoading && (
+              <table
+                ref={tableRef}
+                className="table table-striped table-hover align-items-center"
+                style={{ width: '100%' }}
+              ></table>
+            )}
           </CCardBody>
         </CCard>
       </CCol>
