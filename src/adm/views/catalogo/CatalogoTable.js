@@ -22,13 +22,11 @@ function CatalogoTable() {
 
   useEffect(() => {
     axios.get('/catalogo').then(({ data }) => {
-      const filteredData = data.cata.filter(item => item.deleted_at === null)
-      
       if ($.fn.DataTable.isDataTable(tableRef.current)) {
-        $(tableRef.current).DataTable().clear().rows.add(filteredData).draw()
+        $(tableRef.current).DataTable().clear().rows.add(data.cata).draw()
       } else {
         $(tableRef.current).DataTable({
-          data: filteredData,
+          data: data.cata,
           columns: [
             { data: 'nomeCientifico', title: 'Nome Cientifico' },
             { data: 'nomePopular', title: 'Nome Popular' },

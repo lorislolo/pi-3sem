@@ -57,9 +57,9 @@ function FuncionarioCadastro() {
           </CCardHeader>
           <CCardBody>
             <CForm className="row"
-            noValidate
-            // validated={validated}
-            onSubmit={handleCreate}>
+              noValidate
+              // validated={validated}
+              onSubmit={handleCreate}>
               <CCol className="col-6 mb-2">
                 <CFormInput
                   type="text"
@@ -78,9 +78,9 @@ function FuncionarioCadastro() {
                   required
                   options={[
                     { label: 'Administrador', value: 'ADM' },
-                    { label: 'Totem', value: 'TOTEM' },
+                    { label: 'Toten', value: 'TOTEM' },
                   ]}
-                ></CFormSelect>
+                />
               </CCol>
               <CCol className="col-6 mb-2">
                 <CFormInput
