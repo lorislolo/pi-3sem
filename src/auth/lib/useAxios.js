@@ -1,5 +1,6 @@
 import axios from 'axios'
 import useAuthStore from './storeAuth'
+import { useState } from 'react'
 
 export const baseURL = process.env.API_URL
 
@@ -7,14 +8,21 @@ if (!baseURL) throw new Error('Forneça o URL do backend no .env')
 
 export default function useAxios() {
   const { token, logout } = useAuthStore()
+  const [isLoading, setIsLoading] = useState(false)
 
   const axiosInstance = axios.create({
     baseURL,
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    timeout: 5000,
+    timeout: 1000 * 30,
     timeoutErrorMessage: 'Tempo limite excedido. Tente novamente mais tarde.',
+  })
+
+  axiosInstance.interceptors.request.use((config) => {
+    setIsLoading(true)
+
+    return config
   })
 
   const onSucess = (res) => {
@@ -37,6 +45,7 @@ export default function useAxios() {
       })
     }
 
+    setIsLoading(false)
     return res
   }
 
@@ -49,11 +58,13 @@ export default function useAxios() {
       logout()
     }
 
+    setIsLoading(false)
     return Promise.reject(error)
   }
 
   // Esses callbacks será chamado antes de passar a resposta para o código que fez a requisição
   axiosInstance.interceptors.response.use(onSucess, onError)
 
+  axiosInstance.isLoading = isLoading
   return axiosInstance
 }
