@@ -29,11 +29,16 @@ function FuncionarioEditar() {
 
     const handleUpdate = async (event) => {
         event.preventDefault();
+        if (senhaTxt !== confirmarSenhaTxt) {
+            alert("As senhas não conferem");
+            return;
+        }
         const dados = {
             nome: nomeTxt,
             cpf: cpfTxt,
             email: emailTxt,
-            roles: funcaoTxt
+            roles: funcaoTxt,
+            senha: senhaTxt
         };
         try {
             await axios.put(`/funcionario/${id}`, dados)
@@ -46,25 +51,6 @@ function FuncionarioEditar() {
         //setValidatedUpdate(true);
     }
 
-    const handleSenha = async (event) => {
-        event.preventDefault();
-        if (senhaTxt !== confirmarSenhaTxt) {
-            alert("As senhas não conferem");
-            return;
-        }
-        const dados = {
-            senha: senhaTxt
-        };
-        try {
-            await axios.put(`/funcionario/${id}/senha`, dados);
-            alert("Senha alterada com sucesso");
-            navigate('/funcionario');
-        } catch (error) {
-            console.log(error);
-            alert("Erro ao alterar senha");
-        }
-        // setValidatedSenha(true);
-    }
     return (
         <CRow>
             <CCol>
@@ -119,16 +105,6 @@ function FuncionarioEditar() {
                                     value={emailTxt}
                                     required />
                             </CCol>
-                            <CCol className="col-12">
-                                <CButton type="submit" color="primary" size="m">Salvar</CButton>
-                            </CCol>
-                        </CForm>
-                        <CForm
-                            className="row mb-2"
-                            noValidate
-                        // validated={validatedSenha}
-                        >
-                            <p>Alterar Senha</p>
                             <CCol className="col-6 mb-2">
                                 <CFormInput
                                     type="password"

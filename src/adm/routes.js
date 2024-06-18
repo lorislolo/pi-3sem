@@ -12,6 +12,9 @@ const CatalogoTable = React.lazy(() => import('./views/catalogo/CatalogoTable'))
 const CatalogoCadastro = React.lazy(() => import('./views/catalogo/CatalogoCadastro'))
 const CatalogoEditar = React.lazy(() => import('./views/catalogo/CatalogoEditar'))
 
+const Relatorio = React.lazy(() => import('./views/Relatorio'))
+
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -21,6 +24,7 @@ const routes = [
   { path: '/catalogo', name: 'Catalogo', element: CatalogoTable },
   { path: '/catalogo/cadastro', name: 'Cadastrar', element: CatalogoCadastro },
   { path: '/catalogo/editar/:id', name: 'Editar', element: CatalogoEditar },
+  { path: '/relatorio', name: 'Relatorio', element: Relatorio}
 ]
 
 export default routes
